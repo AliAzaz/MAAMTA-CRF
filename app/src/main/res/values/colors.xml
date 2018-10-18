@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimaryDark">#0097A7</color>
+    <color name="colorPrimary">#006064</color>
+    <color name="colorPrimaryAlpha">#661b5e20</color>
+    <color name="colorAccent">#c8e6c9</color>
+
+    <color name="black">#000000</color>
+    <color name="blackOverlay">#66000000</color>
+    <color name="dullBlack">#292929</color>
+    <color name="grayOverlay">#7f7f7f7f</color>
+    <color name="gray">#7f7f7f</color>
+    <color name="whiteOverlay">#99ffffff</color>
+    <color name="dullWhile">#d6d6d6</color>
+    <color name="dullWhileOverlay">#99d6d6d6</color>
+    <color name="white">#ffffff</color>
+
+    <color name="black_overlay">#66000000</color>
+    <color name="green">#4caf50</color>
+    <color name="red">#af4c50</color>
+
+    <color name="my_spinner_text_color">#FFFFFF</color>
+    <color name="pink_100">#c5cae9</color>
+
+</resources>

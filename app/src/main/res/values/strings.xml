@@ -1,0 +1,90 @@
+<resources>
+    <string name="app_name">WFP Follow UPs</string>
+    <string name="app_name15">MaPPS - Form 15: Exit Questionnaire </string>
+    <string name="app_name16">MaPPS - Form 16: End of Study Participation </string>
+
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions." </string>
+
+    <!-- String related to form buttons -->
+    <string name="end_interview"> End Activity </string>
+    <string name="start_interview"> Start Interview </string>
+    <string name="nextSection"> Next Section </string>
+
+    <!-- String related to section headings -->
+    <string name="crf1"> LW blood specimen for Ferritin, Transferrin, 1-α Acid Glycoprotein and C-Reactive protein </string>
+    <string name="crf2"> Infant blood specimen for Ferritin, Transferrin, 1-α Acid Glycoprotein and C-Reactive protein </string>
+    <string name="crf3"> Stool Sample for 16s RNA Microbiome, MPO and DNA Tac Assay </string>
+    <string name="crf4"> LW  Breastmilk collection </string>
+    <string name="crf5"> PW blood specimen for Ferritin, Vitamin D </string>
+    <string name="crf6"> PW Cord blood specimen  </string>
+
+
+    <!-- Strings that are fixed for all apps -->
+    <string name="title_activity_splashscreen">SplashscreenActivity</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="other"> کوئی اور وضاحت کریں </string>
+    <string name="dkn"> معلوم نہیں/یاد نہیں </string>
+    <string name="yes"> Yes </string>
+    <string name="no"> No </string>
+    <string name="na">کوئی بھی نہیں</string>
+    <string name="na1">لاگو نہیں ہوتا</string>
+    <string name="male"> مرد </string>
+    <string name="female"> عورت </string>
+    <string name="year"> سال </string>
+    <string name="month"> مہینہ </string>
+    <string name="day"> دن </string>
+    <string name="weeks"> ہفتہ </string>
+    <string name="hours"> کلاک </string>
+    <string name="times"> تعداد </string>
+    <string name="gl"> g/dL </string>
+    <string name="not_applicable">Not Applicable</string>
+    <string name="reason">وجہ</string>
+    <string name="pw_name">حاملہ خاتون کا نام </string>
+    <string name="pw_detail"> حاملہ خاتون کی تفصیل </string>
+
+
+    <!-- Strings related to Sections Below -->
+    <string name="istatus">Outcome of MAMTA - CRF</string>
+    <string name="istatusa">Complete</string>
+    <string name="istatusb">Incomplete</string>
+
+    <!--- Section Info String -->
+    <string name="mlw01"> Study ID</string>
+    <string name="mlw02"> Woman’s name</string>
+    <string name="mlw03"> Husband’s name</string>
+    <string name="mlw04"> DSS-ID</string>
+    <string name="mlw05"> Visit status </string>
+    <string name="mlw05a"> Agree for specimen </string>
+    <string name="mlw05b"> Not at home </string>
+    <string name="mlw05c"> Refused </string>
+    <string name="mlw05d"> Shifted out of DSS </string>
+    <string name="mlw06"> Trial Intervention Arm </string>
+    <string name="mlw06a"> ARM A (Control) </string>
+    <string name="mlw06b"> ARM B (Maamta only) </string>
+    <string name="mlw06c"> ARMC (Maamta + Azithromycin) </string>
+    <string name="mlw07"> Time Point </string>
+    <string name="mlw07a"> At 28 days of age of baby </string>
+    <string name="mlw07b"> At 4 months of age of the baby   </string>
+    <string name="mlw08"> Number of collection attempts </string>
+    <string name="mlw09"> Collection </string>
+    <string name="mlw09a"> Collection Date (DD/MM/YYYY) </string>
+    <string name="mlw09b"> Collection Time </string>
+    <string name="mlw10"> Volume </string>
+    <string name="mlw11"> Weight of stool container </string>
+    <string name="mlw11a"> Weight of stool container Before </string>
+    <string name="mlw11b"> Weight of stool container After </string>
+    <string name="mlw12"> Infant Stool Microbiome Sample vials collected </string>
+    <string name="mlw13"> Time Infant Stool Microbiome Sample vials placed in LN2 tank </string>
+
+
+</resources>
