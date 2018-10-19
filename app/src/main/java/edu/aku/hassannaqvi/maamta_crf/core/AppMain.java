@@ -20,8 +20,6 @@ import android.util.Log;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
-import org.json.JSONObject;
-
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -30,7 +28,6 @@ import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 import edu.aku.hassannaqvi.maamta_crf.activities.EndingActivity;
-import edu.aku.hassannaqvi.maamta_crf.contracts.EnrolledContract;
 import edu.aku.hassannaqvi.maamta_crf.contracts.FormsContract;
 import edu.aku.hassannaqvi.maamta_crf.contracts.ParticipantsContract;
 import edu.aku.hassannaqvi.maamta_crf.other.TypefaceUtil;
@@ -100,7 +97,6 @@ public class AppMain extends Application {
     public static String areaCode;
     public static String curCluster = "";
     public static String formType = "";
-    public static String[] loginMem;
 
     public static long installedOn;
     public static int versionCode;

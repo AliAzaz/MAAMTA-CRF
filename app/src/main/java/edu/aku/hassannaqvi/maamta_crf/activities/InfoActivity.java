@@ -21,11 +21,11 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import edu.aku.hassannaqvi.maamta_crf.R;
-import edu.aku.hassannaqvi.maamta_crf.contracts.EnrolledContract;
 import edu.aku.hassannaqvi.maamta_crf.contracts.FormsContract;
 import edu.aku.hassannaqvi.maamta_crf.core.AppMain;
 import edu.aku.hassannaqvi.maamta_crf.core.DatabaseHelper;
 import edu.aku.hassannaqvi.maamta_crf.databinding.ActivityInfoBinding;
+import edu.aku.hassannaqvi.maamta_crf.validation.validatorClass;
 
 public class InfoActivity extends AppCompatActivity {
 
@@ -33,7 +33,6 @@ public class InfoActivity extends AppCompatActivity {
 
     private static final String TAG = InfoActivity.class.getSimpleName();
     DatabaseHelper db;
-    EnrolledContract enrolledParticipant;
     String fTYPE = "";
 
     @Override
@@ -186,32 +185,34 @@ public class InfoActivity extends AppCompatActivity {
 
         AppMain.fc.setTagID(sharedPref.getString("tagName", null));
         AppMain.fc.setFormDate((DateFormat.format("dd-MM-yyyy HH:mm", new Date())).toString());
-        AppMain.fc.setInterviewer01(AppMain.loginMem[1]);
-        AppMain.fc.setInterviewer02(AppMain.loginMem[2]);
-
-        AppMain.fc.setUccode(enrolledParticipant.getUc_code());
-        AppMain.fc.setTehsilcode(enrolledParticipant.getTehsil_code());
-        AppMain.fc.setVillagecode(enrolledParticipant.getVillage_code());
-        AppMain.fc.setLhwCode(enrolledParticipant.getLhw_code());
-
+        AppMain.fc.setInterviewer01(AppMain.userName);
         AppMain.fc.setDeviceID(AppMain.deviceId);
-//        AppMain.fc.setStudyID(bi.studyID.getText().toString());
-        AppMain.fc.setFormType(AppMain.formType);
-
+        AppMain.fc.setStudyID(bi.mlw01.getText().toString());
+        AppMain.fc.setSpecimenID(bi.mlwScan.getText().toString());
+        AppMain.fc.setFormType(fTYPE);
         AppMain.fc.setApp_version(AppMain.versionName + "." + AppMain.versionCode);
 
         JSONObject sInfo = new JSONObject();
-        sInfo.put("puid", enrolledParticipant.getPuid());
-        sInfo.put("pw_name", enrolledParticipant.getPw_name());
-        sInfo.put("h_name", enrolledParticipant.getH_name());
-        sInfo.put("lmp", enrolledParticipant.getLmp());
-        sInfo.put("edd", enrolledParticipant.getEdd());
-        sInfo.put("fupdt", enrolledParticipant.getFupdt());
-        sInfo.put("fupround", enrolledParticipant.getFupround());
-        sInfo.put("resp_type", enrolledParticipant.getResp_type());
+        sInfo.put(fTYPE + "a02", bi.mlw02.getText().toString());
+        sInfo.put(fTYPE + "a03", bi.mlw03.getText().toString());
+        sInfo.put(fTYPE + "a04", bi.mlw04.getText().toString());
+        sInfo.put(fTYPE + "a05", bi.mlw05a.isChecked() ? "1" : bi.mlw05b.isChecked() ? "2"
+                : bi.mlw05c.isChecked() ? "3" : bi.mlw05d.isChecked() ? "4" : "0");
+        sInfo.put(fTYPE + "a06", bi.mlw06a.isChecked() ? "1" : bi.mlw06b.isChecked() ? "2"
+                : bi.mlw06c.isChecked() ? "3" : "0");
+        sInfo.put(fTYPE + "a07", bi.mlw07a.isChecked() ? "1" : bi.mlw07b.isChecked() ? "2" : "0");
+        sInfo.put(fTYPE + "a08", bi.mlw08.getText().toString());
+        sInfo.put(fTYPE + "a09a", bi.mlw09a.getText().toString());
+        sInfo.put(fTYPE + "a09b", bi.mlw09b.getText().toString());
 
-        /*sInfo.put(AppMain.formType + "a04", bi.pfa04a.isChecked() ? "1" : bi.pfa04b.isChecked() ? "2" : "0");
-        sInfo.put(AppMain.formType + "a06", bi.pfa06a.isChecked() ? "1" : bi.pfa06b.isChecked() ? "2" : "0");*/
+        sInfo.put(fTYPE + "a10", bi.mlw10.getText().toString());
+
+        if (fTYPE.equals("crf3")) {
+            sInfo.put(fTYPE + "a11a", bi.mlw11a.getText().toString());
+            sInfo.put(fTYPE + "a11b", bi.mlw11b.getText().toString());
+            sInfo.put(fTYPE + "a12", bi.mlw12a.isChecked() ? "1" : bi.mlw12b.isChecked() ? "2" : "0");
+            sInfo.put(fTYPE + "a13", bi.mlw13.getText().toString());
+        }
 
         AppMain.fc.setsInfo(String.valueOf(sInfo));
 
@@ -249,12 +250,65 @@ public class InfoActivity extends AppCompatActivity {
 
     public boolean ValidateForm() {
 
-        /*if (!validatorClass.EmptyRadioButton(this, bi.pfa04, bi.pfa04b, getString(R.string.pfa04))) {
+        if (!validatorClass.EmptyTextBox(this, bi.mlw01, getString(R.string.mlw01))) {
             return false;
         }
-        return validatorClass.EmptyRadioButton(this, bi.pfa06, bi.pfa06b, getString(R.string.pfa03));*/
+        if (!validatorClass.EmptyTextBox(this, bi.mlw02, getString(R.string.mlw02))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.mlw03, getString(R.string.mlw03))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.mlw04, getString(R.string.mlw04))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.mlw05, bi.mlw05a, getString(R.string.mlw05))) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyTextBox(this, bi.mlwScan, "Specimen ID")) {
+            Toast.makeText(this, "Please scan specimen ID!!", Toast.LENGTH_SHORT).show();
+            return false;
+        }
+
+        if (!validatorClass.EmptyRadioButton(this, bi.mlw06, bi.mlw06a, getString(R.string.mlw06))) {
+            return false;
+        }
+        if (!validatorClass.EmptyRadioButton(this, bi.mlw07, bi.mlw07a, getString(R.string.mlw07))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.mlw08, getString(R.string.mlw08))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.mlw09a, getString(R.string.mlw09a))) {
+            return false;
+        }
+        if (!validatorClass.EmptyTextBox(this, bi.mlw09b, getString(R.string.mlw09b))) {
+            return false;
+        }
+
+        if (fTYPE.equals("crf3")) {
+            if (!validatorClass.EmptyTextBox(this, bi.mlw11a, getString(R.string.mlw11a))) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, bi.mlw11b, getString(R.string.mlw11b))) {
+                return false;
+            }
+        }
+
+        if (!validatorClass.EmptyTextBox(this, bi.mlw10, getString(R.string.mlw10))) {
+            return false;
+        }
+
+        if (fTYPE.equals("crf3")) {
+            if (!validatorClass.EmptyRadioButton(this, bi.mlw12, bi.mlw12a, getString(R.string.mlw12))) {
+                return false;
+            }
+            return validatorClass.EmptyTextBox(this, bi.mlw13, getString(R.string.mlw13));
+        }
 
         return true;
+
     }
 
 }

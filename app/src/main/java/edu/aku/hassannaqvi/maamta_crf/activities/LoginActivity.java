@@ -90,18 +90,11 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     AutoCompleteTextView mEmailView1;
     @BindView(R.id.password1)
     EditText mPasswordView1;
-    @BindView(R.id.email2)
-    AutoCompleteTextView mEmailView2;
-    @BindView(R.id.password2)
-    EditText mPasswordView2;
     @BindView(R.id.txtinstalldate)
     TextView txtinstalldate;
     @BindView(R.id.email_sign_in_button)
     Button mEmailSignInButton;
 
-
-    @BindView(R.id.showPassword2)
-    Button showPassword2;
     @BindView(R.id.showPassword)
     Button showPassword;
     //    @BindView(R.id.spUC)
@@ -110,8 +103,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
     Button syncClusters;
     @BindView(R.id.loginLayout1)
     RelativeLayout loginLayout1;
-    @BindView(R.id.loginLayout2)
-    RelativeLayout loginLayout2;
 
     DatabaseHelper db;
     List<String> clustersCode;
@@ -135,8 +126,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         ButterKnife.bind(this);
 
 //        Initialize Login Members string
-        AppMain.loginMem = new String[3];
-        AppMain.loginMem[0] = "....";    //default value
 
         try {
             AppMain.installedOn = this
@@ -175,24 +164,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailSignInButton.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
-
-//                TextView spUCTxtView = (TextView) spUC.getSelectedView();
-
-//                if (spUC.getSelectedItem() != null) {
-//                    spUCTxtView.setText(null);
-                if (!mEmailView1.getText().toString().contains(mEmailView2.getText())) {
-                    attemptLogin();
-
-                    AppMain.loginMem[1] = mEmailView1.getText().toString();
-                    AppMain.loginMem[2] = mEmailView2.getText().toString();
-                } else {
-                    Toast.makeText(getApplicationContext(), "Both username same", Toast.LENGTH_LONG).show();
-                }
-                /*} else {
-                    Toast.makeText(getApplicationContext(), "Please Sync Clusters!!", Toast.LENGTH_LONG).show();
-//                    spUCTxtView.setTextColor(Color.RED);//just to highlight that this is an error
-//                    spUCTxtView.setText("Please Sync Clusters");//changes the selected item text to this
-                }*/
+                attemptLogin();
             }
         });
 
@@ -217,18 +189,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         } else {
             mPasswordView1.setTransformationMethod(null);
             mPasswordView1.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
-        }
-    }
-
-    @OnClick(R.id.showPassword2)
-    public void onShowPasswordClick1() {
-        //TODO implement
-        if (mPasswordView2.getTransformationMethod() == null) {
-            mPasswordView2.setTransformationMethod(new PasswordTransformationMethod());
-            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_black_24dp, 0, 0, 0);
-        } else {
-            mPasswordView2.setTransformationMethod(null);
-            mPasswordView2.setCompoundDrawablesWithIntrinsicBounds(R.drawable.ic_lock_open_black_24dp, 0, 0, 0);
         }
     }
 
@@ -332,26 +292,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         mEmailView1.setError(null);
         mPasswordView1.setError(null);
 
-        mEmailView2.setError(null);
-        mPasswordView2.setError(null);
-
         // Store values at the time of the login attempt.
         String email1 = mEmailView1.getText().toString();
         String password1 = mPasswordView1.getText().toString();
-
-        String email2 = mEmailView2.getText().toString();
-        String password2 = mPasswordView2.getText().toString();
 
         boolean cancel = false;
         View focusView = null;
 
         // Check for a valid password, if the user entered one.
         if (!TextUtils.isEmpty(password1) && !isPasswordValid(password1)) {
-            mPasswordView1.setError(getString(R.string.error_invalid_password));
-            focusView = mPasswordView1;
-            cancel = true;
-        }
-        if (!TextUtils.isEmpty(password2) && !isPasswordValid(password2)) {
             mPasswordView1.setError(getString(R.string.error_invalid_password));
             focusView = mPasswordView1;
             cancel = true;
@@ -363,15 +312,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             focusView = mEmailView1;
             cancel = true;
         }
-        if (TextUtils.isEmpty(email2)) {
-            mEmailView2.setError(getString(R.string.error_field_required));
-            focusView = mEmailView2;
-            cancel = true;
-        } /*else if (!isEmailValid(email)) {
-            mEmailView1.setError(getString(R.string.error_invalid_email));
-            focusView = mEmailView1;
-            cancel = true;
-        }*/
 
         if (cancel) {
             // There was an error; don't attempt login and focus the first
@@ -381,7 +321,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
             // Show a progress spinner, and kick off a background task to
             // perform the user login attempt.
             showProgress(true);
-            mAuthTask = new UserLoginTask(email1, password1, email2, password2);
+            mAuthTask = new UserLoginTask(email1, password1);
             mAuthTask.execute((Void) null);
         }
     }
@@ -510,14 +450,12 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
      */
     public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
 
-        private final String mEmail1, mEmail2;
-        private final String mPassword1, mPassword2;
+        private final String mEmail1;
+        private final String mPassword1;
 
-        UserLoginTask(String email1, String password1, String email2, String password2) {
+        UserLoginTask(String email1, String password1) {
             mEmail1 = email1;
             mPassword1 = password1;
-            mEmail2 = email2;
-            mPassword2 = password2;
         }
 
         @Override
@@ -556,25 +494,9 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
                     AppMain.userName = mEmail1;
                     AppMain.admin = mEmail1.contains("@");
 
-                    if ((mEmail2.equals("dmu@aku") && mPassword2.equals("aku?dmu")) || db.Login(mEmail2, mPassword2) ||
-                            (mEmail2.equals("test1234") && mPassword2.equals("test1234"))) {
-                        AppMain.userName = mEmail2;
-                        AppMain.admin = mEmail2.contains("@");
-
-                        finish();
-
-                        Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
-                        startActivity(iLogin);
-
-                    } else {
-                        mPasswordView2.setError(getString(R.string.error_incorrect_password));
-                        mPasswordView2.requestFocus();
-                        Toast.makeText(LoginActivity.this, mEmail2 + " " + mPassword2, Toast.LENGTH_SHORT).show();
-
-                        Animation shake = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.shake);
-
-                        loginLayout2.startAnimation(shake);
-                    }
+                    finish();
+                    Intent iLogin = new Intent(LoginActivity.this, MainActivity.class);
+                    startActivity(iLogin);
 
                 } else {
                     mPasswordView1.setError(getString(R.string.error_incorrect_password));

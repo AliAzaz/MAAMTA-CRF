@@ -52,7 +52,7 @@ public class FormsAdapter extends RecyclerView.Adapter<FormsAdapter.ViewHolder> 
 //        holder.cluster.setText(fc.get(position).get106().toString());
 
         holder.date.setText(fc.get(position).getFormDate());
-        holder.cluster.setText(fc.get(position).getTehsilcode());
+        holder.cluster.setText(fc.get(position).getStudyID());
 
         String iStatus = "Status  Unknown";
         int iColor = 0;

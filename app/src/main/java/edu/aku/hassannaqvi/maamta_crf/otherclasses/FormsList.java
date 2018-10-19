@@ -36,16 +36,7 @@ public class FormsList extends Activity {
         cNo.setText("Forms for Cluster: " + areacode);
         Log.d("TAG:Cluster", areacode);
         DatabaseHelper db = new DatabaseHelper(getApplicationContext());
-        List<FormsContract> forms = db.getFormsByCluster(areacode);
-
-//        Sample Testing
-//        List<FormsContract> forms = new ArrayList<>();
-//        forms.add(new FormsContract("1","1","Ali"));
-//        forms.add(new FormsContract("2","2","Ali"));
-//        forms.add(new FormsContract("3","3","Ali"));
-//        forms.add(new FormsContract("4","2","Ali"));
-//        forms.add(new FormsContract("5","1","Ali"));
-
+        List<FormsContract> forms = db.getFormsByStudyID(areacode);
 
         for (FormsContract fc : forms) {
             fTotal++;

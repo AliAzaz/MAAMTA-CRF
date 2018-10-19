@@ -43,7 +43,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             + UsersTable.ROW_USERNAME + " TEXT,"
             + UsersTable.ROW_PASSWORD + " TEXT );";
 
-    public static final String DATABASE_NAME = "wfp_followups.db";
+    public static final String DATABASE_NAME = "mamta_crf.db";
     public static String DB_NAME = DATABASE_NAME.replace(".db", "_copy.db");
 
     private static final int DATABASE_VERSION = 1;
@@ -55,16 +55,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_UID + " TEXT," +
             FormsTable.COLUMN_FORMDATE + " TEXT," +
             FormsTable.COLUMN_INTERVIEWER01 + " TEXT," +
-            FormsTable.COLUMN_INTERVIEWER02 + " TEXT," +
+            /*FormsTable.COLUMN_INTERVIEWER02 + " TEXT," +
             FormsTable.COLUMN_UCCODE + " TEXT," +
             FormsTable.COLUMN_VILLAGE_CODE + " TEXT," +
-            FormsTable.COLUMN_TEHSIL_CODE + " TEXT," +
-            FormsTable.COLUMN_LHWCODE + " TEXT," +
+            FormsTable.COLUMN_TEHSIL_CODE + " TEXT," +*/
+            FormsTable.COLUMN_SPECIMEN_ID + " TEXT," +
             FormsTable.COLUMN_ISTATUS + " TEXT," +
             FormsTable.COLUMN_STUDY_ID + " TEXT," +
             FormsTable.COLUMN_FORMTYPE + " TEXT," +
             FormsTable.COLUMN_SINFO + " TEXT," +
-            FormsTable.COLUMN_SB + " TEXT," +
+            /*FormsTable.COLUMN_SB + " TEXT," +
             FormsTable.COLUMN_SC + " TEXT," +
             FormsTable.COLUMN_SD + " TEXT," +
             FormsTable.COLUMN_SE + " TEXT," +
@@ -72,7 +72,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SG + " TEXT," +
             FormsTable.COLUMN_SH + " TEXT," +
             FormsTable.COLUMN_SI + " TEXT," +
-            FormsTable.COLUMN_SJ + " TEXT," +
+            FormsTable.COLUMN_SJ + " TEXT," +*/
             FormsTable.COLUMN_ENDINGDATETIME + " TEXT," +
             FormsTable.COLUMN_GPSLAT + " TEXT," +
             FormsTable.COLUMN_GPSLNG + " TEXT," +
@@ -84,7 +84,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             FormsTable.COLUMN_SYNCED + " TEXT," +
             FormsTable.COLUMN_SYNCED_DATE + " TEXT"
             + " );";
-    private static final String SQL_CREATE_PARTICIPANTS = "CREATE TABLE "
+    /*private static final String SQL_CREATE_PARTICIPANTS = "CREATE TABLE "
             + ParticipantsTable.TABLE_NAME + "("
             + ParticipantsTable.COLUMN_PROJECTNAME + " TEXT,"
             + ParticipantsTable.COLUMN_SURVEYTYPE + " TEXT,"
@@ -147,22 +147,20 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             ClustersContract.ClustersTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
             ClustersContract.ClustersTable.COLUMN_CLUSTERNAME + " TEXT," +
             ClustersContract.ClustersTable.COLUMN_CLUSTERCODE + " TEXT" +
-            " );";
-    /**
-     * DELETE STRINGS
-     */
+            " );";*/
+
     private static final String SQL_DELETE_USERS =
             "DROP TABLE IF EXISTS " + UsersTable.TABLE_NAME;
-    private static final String SQL_DELETE_LHWS =
+    /*private static final String SQL_DELETE_LHWS =
             "DROP TABLE IF EXISTS " + LHWsContract.LHWsTable.TABLE_NAME;
     private static final String SQL_DELETE_CLUSTERS =
             "DROP TABLE IF EXISTS " + ClustersContract.ClustersTable.TABLE_NAME;
-    private static final String SQL_DELETE_ENROLLED =
-            "DROP TABLE IF EXISTS " + EnrolledTable.TABLE_NAME;
-    private static final String SQL_DELETE_FORMS =
-            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
     private static final String SQL_DELETE_PARTICIPANTS =
             "DROP TABLE IF EXISTS " + ParticipantsTable.TABLE_NAME;
+    private static final String SQL_DELETE_ENROLLED =
+            "DROP TABLE IF EXISTS " + EnrolledTable.TABLE_NAME;*/
+    private static final String SQL_DELETE_FORMS =
+            "DROP TABLE IF EXISTS " + FormsTable.TABLE_NAME;
 
     private final String TAG = "DatabaseHelper";
     public String spDateT = new SimpleDateFormat("dd-MM-yy").format(new Date().getTime());
@@ -175,22 +173,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(SQL_CREATE_USERS);
-        db.execSQL(SQL_CREATE_ENROLLED);
+        /*db.execSQL(SQL_CREATE_ENROLLED);
         db.execSQL(SQL_CREATE_LHWS);
-        db.execSQL(SQL_CREATE_CLUSTERS);
-        db.execSQL(SQL_CREATE_FORMS);
         db.execSQL(SQL_CREATE_PARTICIPANTS);
-
+        db.execSQL(SQL_CREATE_CLUSTERS);*/
+        db.execSQL(SQL_CREATE_FORMS);
     }
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int i, int i1) {
         db.execSQL(SQL_DELETE_USERS);
-        db.execSQL(SQL_DELETE_ENROLLED);
+        /*db.execSQL(SQL_DELETE_ENROLLED);
         db.execSQL(SQL_DELETE_LHWS);
-        db.execSQL(SQL_DELETE_CLUSTERS);
-        db.execSQL(SQL_DELETE_FORMS);
         db.execSQL(SQL_DELETE_PARTICIPANTS);
+        db.execSQL(SQL_DELETE_CLUSTERS);*/
+        db.execSQL(SQL_DELETE_FORMS);
     }
 
     public void syncUsers(JSONArray userlist) {
@@ -363,16 +360,16 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_UID, fc.getUID());
         values.put(FormsTable.COLUMN_FORMDATE, fc.getFormDate());
         values.put(FormsTable.COLUMN_INTERVIEWER01, fc.getInterviewer01());
-        values.put(FormsTable.COLUMN_INTERVIEWER02, fc.getInterviewer02());
+        /*values.put(FormsTable.COLUMN_INTERVIEWER02, fc.getInterviewer02());
         values.put(FormsTable.COLUMN_UCCODE, fc.getUccode());
         values.put(FormsTable.COLUMN_VILLAGE_CODE, fc.getVillagecode());
-        values.put(FormsTable.COLUMN_TEHSIL_CODE, fc.getTehsilcode());
-        values.put(FormsTable.COLUMN_LHWCODE, fc.getLhwCode());
+        values.put(FormsTable.COLUMN_TEHSIL_CODE, fc.getTehsilcode());*/
+        values.put(FormsTable.COLUMN_SPECIMEN_ID, fc.getSpecimenID());
         values.put(FormsTable.COLUMN_ISTATUS, fc.getIstatus());
         values.put(FormsTable.COLUMN_STUDY_ID, fc.getStudyID());
         values.put(FormsTable.COLUMN_FORMTYPE, fc.getFormType());
         values.put(FormsTable.COLUMN_SINFO, fc.getsInfo());
-        values.put(FormsTable.COLUMN_SB, fc.getsB());
+        /*values.put(FormsTable.COLUMN_SB, fc.getsB());
         values.put(FormsTable.COLUMN_SC, fc.getsC());
         values.put(FormsTable.COLUMN_SD, fc.getsD());
         values.put(FormsTable.COLUMN_SE, fc.getsE());
@@ -380,7 +377,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(FormsTable.COLUMN_SG, fc.getsG());
         values.put(FormsTable.COLUMN_SH, fc.getsH());
         values.put(FormsTable.COLUMN_SI, fc.getsI());
-        values.put(FormsTable.COLUMN_SJ, fc.getsJ());
+        values.put(FormsTable.COLUMN_SJ, fc.getsJ());*/
         values.put(FormsTable.COLUMN_ENDINGDATETIME, fc.getEndingDateTime());
         values.put(FormsTable.COLUMN_GPSLAT, fc.getGpsLat());
         values.put(FormsTable.COLUMN_GPSLNG, fc.getGpsLng());
@@ -571,7 +568,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     }
 
 
-    public int updatesB() {
+    /*public int updatesB() {
         SQLiteDatabase db = this.getReadableDatabase();
 
 // New value for one column
@@ -731,7 +728,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 selection,
                 selectionArgs);
         return count;
-    }
+    }*/
 
 
     public int updateEnding() {
@@ -902,14 +899,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_INTERVIEWER01,
-                FormsTable.COLUMN_INTERVIEWER02,
+                /*FormsTable.COLUMN_INTERVIEWER02,
                 FormsTable.COLUMN_UCCODE,
                 FormsTable.COLUMN_VILLAGE_CODE,
-                FormsTable.COLUMN_TEHSIL_CODE,
-                FormsTable.COLUMN_LHWCODE,
+                FormsTable.COLUMN_TEHSIL_CODE,*/
+                FormsTable.COLUMN_SPECIMEN_ID,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SINFO,
-                FormsTable.COLUMN_SB,
+                /*FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_SC,
                 FormsTable.COLUMN_SD,
                 FormsTable.COLUMN_SE,
@@ -917,7 +914,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SG,
                 FormsTable.COLUMN_SH,
                 FormsTable.COLUMN_SI,
-                FormsTable.COLUMN_SJ,
+                FormsTable.COLUMN_SJ,*/
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -975,14 +972,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_UID,
                 FormsTable.COLUMN_FORMDATE,
                 FormsTable.COLUMN_INTERVIEWER01,
-                FormsTable.COLUMN_INTERVIEWER02,
+                /*FormsTable.COLUMN_INTERVIEWER02,
                 FormsTable.COLUMN_UCCODE,
                 FormsTable.COLUMN_VILLAGE_CODE,
-                FormsTable.COLUMN_TEHSIL_CODE,
-                FormsTable.COLUMN_LHWCODE,
+                FormsTable.COLUMN_TEHSIL_CODE,*/
+                FormsTable.COLUMN_SPECIMEN_ID,
                 FormsTable.COLUMN_ISTATUS,
                 FormsTable.COLUMN_SINFO,
-                FormsTable.COLUMN_SB,
+                /*FormsTable.COLUMN_SB,
                 FormsTable.COLUMN_SC,
                 FormsTable.COLUMN_SD,
                 FormsTable.COLUMN_SE,
@@ -990,7 +987,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsTable.COLUMN_SG,
                 FormsTable.COLUMN_SH,
                 FormsTable.COLUMN_SI,
-                FormsTable.COLUMN_SJ,
+                FormsTable.COLUMN_SJ,*/
                 FormsTable.COLUMN_ENDINGDATETIME,
                 FormsTable.COLUMN_GPSLAT,
                 FormsTable.COLUMN_GPSLNG,
@@ -1183,12 +1180,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         Cursor c = null;
         String[] columns = {
                 FormsTable.COLUMN__ID,
-                FormsTable.COLUMN_UCCODE,
-                FormsContract.FormsTable.COLUMN_VILLAGE_CODE,
-                FormsContract.FormsTable.COLUMN_TEHSIL_CODE,
+                FormsTable.COLUMN_STUDY_ID,
+                FormsTable.COLUMN_SPECIMEN_ID,
         };
 
-        String whereClause = FormsTable.COLUMN_UCCODE + " LIKE ?";
+        String whereClause = FormsTable.COLUMN_FORMDATE + " LIKE ?";
         String[] whereArgs = {spDateT};
         String groupBy = null;
         String having = null;
@@ -1225,10 +1221,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return formList;
     }
 
-    public List<FormsContract> getFormsByCluster(String psu) {
+    public List<FormsContract> getFormsByStudyID(String stdID) {
         List<FormsContract> formList = new ArrayList<FormsContract>();
         // Select All Unsynced Query
-        String selectQuery = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsContract.FormsTable.COLUMN_UCCODE + "='" + psu + "' ORDER BY " + FormsTable._ID + " desc";
+        String selectQuery = "SELECT * FROM " + FormsTable.TABLE_NAME + " WHERE " + FormsTable.COLUMN_STUDY_ID + "='" + stdID + "' ORDER BY " + FormsTable.COLUMN__ID + " desc";
         //String selectQuery = "SELECT  * FROM " + singleForm.TABLE_NAME;
         Log.d(TAG, selectQuery);
         SQLiteDatabase db = this.getWritableDatabase();
@@ -1240,7 +1236,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 FormsContract form = new FormsContract();
                 form.setFormDate(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_FORMDATE)));
                 form.setIstatus(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_ISTATUS)));
-                form.setTehsilcode(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_TEHSIL_CODE)));
+                form.setStudyID(cursor.getString(cursor.getColumnIndex(FormsTable.COLUMN_STUDY_ID)));
 
                 // Adding contact to list
                 formList.add(form);
