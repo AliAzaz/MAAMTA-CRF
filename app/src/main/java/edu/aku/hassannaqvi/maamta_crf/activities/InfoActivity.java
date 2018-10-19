@@ -1,17 +1,14 @@
 package edu.aku.hassannaqvi.maamta_crf.activities;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
-import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -20,23 +17,17 @@ import com.google.zxing.integration.android.IntentResult;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
+import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 
 import edu.aku.hassannaqvi.maamta_crf.R;
 import edu.aku.hassannaqvi.maamta_crf.contracts.EnrolledContract;
 import edu.aku.hassannaqvi.maamta_crf.contracts.FormsContract;
-import edu.aku.hassannaqvi.maamta_crf.contracts.LHWsContract;
 import edu.aku.hassannaqvi.maamta_crf.core.AppMain;
 import edu.aku.hassannaqvi.maamta_crf.core.DatabaseHelper;
 import edu.aku.hassannaqvi.maamta_crf.databinding.ActivityInfoBinding;
-import edu.aku.hassannaqvi.maamta_crf.validation.validatorClass;
 
-public class InfoActivity extends Activity {
+public class InfoActivity extends AppCompatActivity {
 
     ActivityInfoBinding bi;
 
@@ -52,14 +43,29 @@ public class InfoActivity extends Activity {
         bi = DataBindingUtil.setContentView(this, R.layout.activity_info);
         bi.setCallback(this);
 
-        fTYPE = getIntent().getStringExtra("fType");
+        InitializingItems();
+        SetContent();
 
-        this.setTitle(LabelsAssign(fTYPE));
+    }
+
+    public void InitializingItems() {
+
         db = new DatabaseHelper(this);
 
+        fTYPE = getIntent().getStringExtra("fType");
+        this.setTitle(LabelsAssign(fTYPE));
+
+        bi.mlw09a.setManager(getSupportFragmentManager());
+        bi.mlw09a.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+        bi.mlw09b.setManager(getSupportFragmentManager());
+        bi.mlw13.setManager(getSupportFragmentManager());
+        bi.mlw13.setMaxDate(new SimpleDateFormat("dd/MM/yyyy").format(System.currentTimeMillis()));
+
+    }
+
+    public void SetContent() {
         bi.mlwCrf3A.setVisibility(fTYPE.equals("crf3") ? View.VISIBLE : View.GONE);
         bi.mlwCrf3B.setVisibility(fTYPE.equals("crf3") ? View.VISIBLE : View.GONE);
-
     }
 
     private String LabelsAssign(String fTYPE) {
