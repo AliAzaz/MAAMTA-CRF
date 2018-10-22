@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.databinding.DataBindingUtil;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Bundle;
@@ -16,9 +17,6 @@ import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
@@ -27,13 +25,13 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import edu.aku.hassannaqvi.maamta_crf.R;
 import edu.aku.hassannaqvi.maamta_crf.contracts.FormsContract;
 import edu.aku.hassannaqvi.maamta_crf.core.AndroidDatabaseManager;
 import edu.aku.hassannaqvi.maamta_crf.core.AppMain;
 import edu.aku.hassannaqvi.maamta_crf.core.DatabaseHelper;
+import edu.aku.hassannaqvi.maamta_crf.databinding.ActivityMainBinding;
 import edu.aku.hassannaqvi.maamta_crf.getclasses.GetPWs;
 import edu.aku.hassannaqvi.maamta_crf.otherclasses.FormsList;
 import edu.aku.hassannaqvi.maamta_crf.syncclasses.SyncAllData;
@@ -44,17 +42,6 @@ public class MainActivity extends Activity {
     private static final String TAG = MainActivity.class.getSimpleName();
 
     String dtToday = new SimpleDateFormat("dd-MM-yy HH:mm").format(new Date().getTime());
-    @BindView(R.id.adminsec)
-    LinearLayout adminsec;
-    @BindView(R.id.recordSummary)
-    TextView recordSummary;
-    @BindView(R.id.areaCode)
-    EditText areaCode;
-    @BindView(R.id.testing)
-    TextView testing;
-
-    @BindView(R.id.spUC)
-    Spinner spUC;
 
     SharedPreferences sharedPref;
     SharedPreferences.Editor editor;
@@ -67,6 +54,8 @@ public class MainActivity extends Activity {
     private ProgressDialog pd;
     private Boolean exit = false;
 
+    ActivityMainBinding bi;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,19 +63,25 @@ public class MainActivity extends Activity {
 
         ButterKnife.bind(this);
 
+        // Data binding initializing
+        bi = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        bi.setCallback(this);
+
+        //Setting Testing label
         if (Integer.valueOf(AppMain.versionName.split("\\.")[0]) > 0) {
-            testing.setVisibility(View.GONE);
+            bi.testing.setVisibility(View.GONE);
         } else {
-            testing.setVisibility(View.VISIBLE);
+            bi.testing.setVisibility(View.VISIBLE);
         }
+
 
         // Reset working variables
         AppMain.child_name = "Test";
 
         if (AppMain.admin) {
-            adminsec.setVisibility(View.VISIBLE);
+            bi.adminsec.setVisibility(View.VISIBLE);
         } else {
-            adminsec.setVisibility(View.GONE);
+            bi.adminsec.setVisibility(View.GONE);
         }
 
         sharedPref = getSharedPreferences("tagName", MODE_PRIVATE);
@@ -123,14 +118,6 @@ public class MainActivity extends Activity {
             builder.show();
         }
 
-
-        /*if (AppMain.admin) {
-            adminsec.setVisibility(View.VISIBLE);
-        } else {
-            adminsec.setVisibility(View.GONE);
-        }
-
-*/
         db = new DatabaseHelper(this);
         Collection<FormsContract> todaysForms = db.getTodayForms();
         Collection<FormsContract> unsyncedForms6 = db.getAllForms();
@@ -180,7 +167,7 @@ public class MainActivity extends Activity {
             }
         }
         if (AppMain.admin) {
-            adminsec.setVisibility(View.VISIBLE);
+            bi.adminsec.setVisibility(View.VISIBLE);
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             rSumText += "Last Data Download: \t" + syncPref.getString("LastDownSyncServer", "Never Updated");
             rSumText += "\r\n";
@@ -192,12 +179,11 @@ public class MainActivity extends Activity {
 
         }
         Log.d(TAG, "onCreate: " + rSumText);
-        recordSummary.setText(rSumText);
-
+        bi.recordSummary.setText(rSumText);
 
     }
 
-    public void openCRF(final Integer fType) {
+    public void openCRF(Integer fType) {
         if (sharedPref.getString("tagName", null) != "" && sharedPref.getString("tagName", null) != null) {
             Intent oF = new Intent(MainActivity.this, InfoActivity.class)
                     .putExtra("fType", TypeAssign(fType));
@@ -223,7 +209,7 @@ public class MainActivity extends Activity {
                         editor.commit();
 
                         Intent oF = new Intent(MainActivity.this, InfoActivity.class)
-                                .putExtra("fType", TypeAssign(fType));
+                                .putExtra("fType", TypeAssign(1));
                         startActivity(oF);
                     }
                 }
@@ -263,16 +249,16 @@ public class MainActivity extends Activity {
     }
 
     public void CheckCluster(View v) {
-        if (!areaCode.getText().toString().isEmpty()) {
+        if (!bi.areaCode.getText().toString().isEmpty()) {
 
-            areaCode.setError(null);
+            bi.areaCode.setError(null);
 
             Intent Clist = new Intent(getApplicationContext(), FormsList.class);
-            Clist.putExtra("areaCode", areaCode.getText().toString());
+            Clist.putExtra("areaCode", bi.areaCode.getText().toString());
             startActivity(Clist);
         } else {
             Toast.makeText(this, "Error(Empty): Data Required", Toast.LENGTH_SHORT).show();
-            areaCode.setError("Error(Empty): Data Required");
+            bi.areaCode.setError("Error(Empty): Data Required");
         }
     }
 

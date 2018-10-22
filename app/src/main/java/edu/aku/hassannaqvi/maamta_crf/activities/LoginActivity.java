@@ -59,7 +59,6 @@ import butterknife.OnClick;
 import edu.aku.hassannaqvi.maamta_crf.R;
 import edu.aku.hassannaqvi.maamta_crf.core.AppMain;
 import edu.aku.hassannaqvi.maamta_crf.core.DatabaseHelper;
-import edu.aku.hassannaqvi.maamta_crf.getclasses.GetPWs;
 import edu.aku.hassannaqvi.maamta_crf.getclasses.GetUsers;
 
 
@@ -130,15 +129,15 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
         try {
             AppMain.installedOn = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.wfp_followups", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.maamta_crf", 0)
                     .lastUpdateTime;
             AppMain.versionCode = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.wfp_followups", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.maamta_crf", 0)
                     .versionCode;
             AppMain.versionName = this
                     .getPackageManager()
-                    .getPackageInfo("edu.aku.hassannaqvi.wfp_followups", 0)
+                    .getPackageInfo("edu.aku.hassannaqvi.maamta_crf", 0)
                     .versionName;
             txtinstalldate.setText("Ver. " + AppMain.versionName + "." + String.valueOf(AppMain.versionCode) + " \r\n( Last Updated: " + new SimpleDateFormat("dd MMM. yyyy").format(new Date(AppMain.installedOn)) + " )");
         } catch (PackageManager.NameNotFoundException e) {
@@ -194,7 +193,7 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
     public void dbBackup() {
 
-        sharedPref = getSharedPreferences("wfp_followups", MODE_PRIVATE);
+        sharedPref = getSharedPreferences("maamta_crf", MODE_PRIVATE);
         editor = sharedPref.edit();
 
         if (sharedPref.getBoolean("flag", false)) {
@@ -557,9 +556,6 @@ public class LoginActivity extends Activity implements LoaderCallbacks<Cursor> {
 
                 @Override
                 public void run() {
-                    Toast.makeText(getApplicationContext(), "Getting PW's", Toast.LENGTH_SHORT).show();
-                    new GetPWs(mContext).execute();
-
                     Toast.makeText(getApplicationContext(), "Getting Users", Toast.LENGTH_SHORT).show();
                     new GetUsers(mContext).execute();
                 }

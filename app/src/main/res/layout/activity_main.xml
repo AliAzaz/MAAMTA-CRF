@@ -90,63 +90,51 @@
 
             <Button
                 android:id="@+id/openCRF1"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{(v) -> callback.openCRF(1)}"
-                android:text="CRF-1"
-                android:textSize="28sp" />
+                android:text="CRF-1" />
 
             <Button
                 android:id="@+id/openCRF2"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{(v) -> callback.openCRF(2)}"
-                android:text="CRF-1"
-                android:textSize="28sp" />
+                android:text="CRF-2" />
 
             <Button
                 android:id="@+id/openCRF3"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{(v) -> callback.openCRF(3)}"
-                android:text="CRF-1"
-                android:textSize="28sp" />
+                android:text="CRF-3" />
 
             <Button
                 android:id="@+id/openCRF4"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{(v) -> callback.openCRF(4)}"
-                android:text="CRF-1"
-                android:textSize="28sp" />
+                android:text="CRF-4" />
 
             <Button
                 android:id="@+id/openCRF5"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{(v) -> callback.openCRF(5)}"
-                android:text="CRF-1"
-                android:textSize="28sp" />
+                android:text="CRF-5" />
 
             <Button
                 android:id="@+id/openCRF6"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="@{(v) -> callback.openCRF(6)}"
-                android:text="CRF-1"
-                android:textSize="28sp" />
+                android:text="CRF-6" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -175,13 +163,11 @@
 
             <Button
                 android:id="@+id/syncServer"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                style="@style/buttonBG"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="8dp"
                 android:onClick="syncServer"
-                android:text="Upload Data"
-                android:textSize="28sp" />
+                android:text="Upload Data" />
 
             <Button
                 android:id="@+id/syncDevice"
@@ -202,13 +188,11 @@
 
                 <Button
                     android:id="@+id/openDB"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    style="@style/buttonBG"
                     android:layout_marginTop="16dp"
                     android:layout_marginBottom="8dp"
                     android:onClick="openDB"
-                    android:text="Open Database Manager"
-                    android:textSize="28sp" />
+                    android:text="Open Database Manager" />
             </LinearLayout>
 
 

@@ -42,14 +42,14 @@ public class AppMain extends Application {
     //    public static final String _IP = "10.1.79.42"; // Matiyari server
     public static final Integer _PORT = 8080; // Port - with colon (:)
 
-    public static final String _PROJECT_FOLDER_PF = "wfp-pishin/api/";
+    public static final String _PROJECT_FOLDER_MAMTA = "maamta-crf/api/";
     public static final String _PROJECT_FOLDER_4 = "mapps/form4/api/";
     public static final String _PROJECT_FOLDER_3 = "mapps/form3/api/";
     public static final String _PROJECT_FOLDER_15 = "mapps/form15/api/";
     public static final String _PROJECT_FOLDER_16 = "mapps/form16/api/";
     public static final String _PROJECT_FOLDER_15_16 = "mapps/form15_16/api/";
 
-    public static final String _HOST_URL = "http://" + _IP + ":" + _PORT + "/" + _PROJECT_FOLDER_PF;
+    public static final String _HOST_URL = "http://" + _IP + ":" + _PORT + "/" + _PROJECT_FOLDER_MAMTA;
 
     public static final String _HOST_URL_3 =
             "http://" + _IP

@@ -1,7 +1,5 @@
 <resources>
-    <string name="app_name">WFP Follow UPs</string>
-    <string name="app_name15">MaPPS - Form 15: Exit Questionnaire </string>
-    <string name="app_name16">MaPPS - Form 16: End of Study Participation </string>
+    <string name="app_name">MAAMTA-CRF</string>
 
     <!-- Strings related to login -->
     <string name="prompt_email">Email</string>
