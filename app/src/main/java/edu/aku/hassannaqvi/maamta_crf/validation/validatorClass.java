@@ -37,6 +37,30 @@ public abstract class validatorClass {
         }
     }
 
+    public static boolean EmptyTextBox(Context context, EditText txt, String msg, int minLimit, int maxLimit) {
+        if (EmptyTextBox(context, txt, msg)) {
+
+            if (minLimit <= maxLimit) {
+                if (txt.getText().toString().length() < minLimit || txt.getText().toString().length() > maxLimit) {
+                    Toast.makeText(context, "ERROR(Invalid): " + msg, Toast.LENGTH_SHORT).show();
+                    txt.setError("Length " + (minLimit == maxLimit ? "must be " + maxLimit : ("in between " + minLimit + "," + maxLimit)));    // Set Error on last radio button
+                    txt.requestFocus();
+                    Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Invalid Length!");
+                    return false;
+                } else {
+                    txt.setError(null);
+                    return true;
+                }
+            } else {
+                txt.setError("Min Limit greater then or equal to max Limit");
+                return false;
+            }
+
+        } else {
+            return false;
+        }
+    }
+
     public static void setScrollViewFocus(ScrollView scrollView) {
         scrollView.setDescendantFocusability(ViewGroup.FOCUS_BEFORE_DESCENDANTS);
         scrollView.setFocusable(true);
@@ -61,6 +85,24 @@ public abstract class validatorClass {
         } else {
             txt.setError(null);
             return true;
+        }
+    }
+
+    public static boolean PatternTextBox(Context context, EditText txt, String msg, String pattern, int minSub, int maxSub, String pat_type) {
+        if (minSub <= maxSub) {
+            if (!txt.getText().toString().substring(minSub, maxSub).matches(pattern)) {
+                Toast.makeText(context, "ERROR(Invalid): " + msg, Toast.LENGTH_SHORT).show();
+                txt.setError("Required: " + pat_type);    // Set Error on last radio button
+                txt.requestFocus();
+                Log.i(context.getClass().getName(), context.getResources().getResourceEntryName(txt.getId()) + ": Required: " + pat_type);
+                return false;
+            } else {
+                txt.setError(null);
+                return true;
+            }
+        } else {
+            txt.setError("Min Limit greater then or equal to max Limit");
+            return false;
         }
     }
 

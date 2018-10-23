@@ -51,7 +51,8 @@ public class InfoActivity extends AppCompatActivity {
 
         db = new DatabaseHelper(this);
 
-        fTYPE = getIntent().getStringExtra("fType");
+//        fTYPE = getIntent().getStringExtra("fType");
+        fTYPE = "crf1";
         this.setTitle(LabelsAssign(fTYPE));
 
         bi.mlw09a.setManager(getSupportFragmentManager());
@@ -121,15 +122,17 @@ public class InfoActivity extends AppCompatActivity {
         if (result != null) {
             if (result.getContents() == null) {
                 Toast.makeText(this, "Cancelled", Toast.LENGTH_LONG).show();
+                bi.mlwScan.setEnabled(true);
+                bi.mlwScan.setError(null);
             } else {
-                if (result.getContents().contains("WB")) {
-                    Toast.makeText(this, "WB Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
-                    bi.mlwScan.setText("§" + result.getContents().trim());
-                    bi.mlwScan.setEnabled(false);
-                    bi.mlwScan.setError(null);
-                } else {
+//                if (result.getContents().contains("WB")) {
+                Toast.makeText(this, "Scanned: " + result.getContents(), Toast.LENGTH_LONG).show();
+                bi.mlwScan.setText("§" + result.getContents().trim());
+                bi.mlwScan.setEnabled(false);
+                bi.mlwScan.setError(null);
+                /*} else {
                     bi.mlwScan.setError("Please Scan correct QR code");
-                }
+                }*/
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
@@ -250,7 +253,7 @@ public class InfoActivity extends AppCompatActivity {
 
     public boolean ValidateForm() {
 
-        if (!validatorClass.EmptyTextBox(this, bi.mlw01, getString(R.string.mlw01))) {
+        if (!validatorClass.EmptyTextBox(this, bi.mlw01, getString(R.string.mlw01), 10, 10)) {
             return false;
         }
         if (!validatorClass.EmptyTextBox(this, bi.mlw02, getString(R.string.mlw02))) {
@@ -259,9 +262,14 @@ public class InfoActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, bi.mlw03, getString(R.string.mlw03))) {
             return false;
         }
+
         if (!validatorClass.EmptyTextBox(this, bi.mlw04, getString(R.string.mlw04))) {
             return false;
         }
+        if (!validatorClass.PatternTextBox(this, bi.mlw04, getString(R.string.mlw04), "[^0-9]{4,4}[0-9]{5,5}-[^0-9]{1,1}[0-9]{1,2}", 0, 12, "XXXXXXXXX-XX")) {
+            return false;
+        }
+
         if (!validatorClass.EmptyRadioButton(this, bi.mlw05, bi.mlw05a, getString(R.string.mlw05))) {
             return false;
         }
@@ -269,6 +277,22 @@ public class InfoActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, bi.mlwScan, "Specimen ID")) {
             Toast.makeText(this, "Please scan specimen ID!!", Toast.LENGTH_SHORT).show();
             return false;
+        }
+
+        if (bi.mlwScan.isEnabled()) {
+
+            if (bi.mlwScan.getText().toString().length() > 6) {
+
+                if (!validatorClass.PatternTextBox(this, bi.mlwScan, "Specimen ID", "[^0-9]{1,1}[0-9]{5,5}-", 0, 7, "XXXXX-XX+")) {
+                    return false;
+                }
+
+            } else {
+                bi.mlwScan.setError("Incompatible length Specimen ID");
+                Toast.makeText(this, "Incompatible length Specimen ID", Toast.LENGTH_SHORT).show();
+                return false;
+            }
+
         }
 
         if (!validatorClass.EmptyRadioButton(this, bi.mlw06, bi.mlw06a, getString(R.string.mlw06))) {

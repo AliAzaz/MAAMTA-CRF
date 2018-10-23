@@ -39,12 +39,14 @@
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.santalu.widget.MaskEditText
                         android:id="@+id/mlw01"
-                        style="@style/EditText_number"
-                        android:digits="0123456789-"
-                        android:hint="@string/mlw01"
-                        android:maxLength="10" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="##-##-####"
+                        android:inputType="textCapWords"
+                        android:maxLength="10"
+                        app:met_mask="##-##-####" />
 
                 </LinearLayout>
 
@@ -113,12 +115,13 @@
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.santalu.widget.MaskEditText
                         android:id="@+id/mlw04"
-                        style="@style/EditText_number"
-                        android:digits="0123456789-"
-                        android:hint="@string/mlw04"
-                        android:maxLength="12" />
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="#########-###"
+                        android:inputType="textCapWords"
+                        app:met_mask="#########-###" />
 
                 </LinearLayout>
 
@@ -192,6 +195,7 @@
                     <EditText
                         android:id="@+id/mlwScan"
                         style="@style/EditText_ch_num"
+                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
                         android:hint="SPECIMEN BARCODE" />
 
                     <Button
