@@ -43,7 +43,7 @@
                         android:id="@+id/mlw01"
                         style="@style/EditText_ch_num"
                         android:hint="##-##-####"
-                        android:inputType="textCapWords"
+                        android:inputType="textCapCharacters"
                         android:maxLength="10"
                         app:met_mask="##-##-####" />
 
@@ -118,7 +118,7 @@
                         android:id="@+id/mlw04"
                         style="@style/EditText_ch_num"
                         android:hint="#########-##"
-                        android:inputType="textCapWords"
+                        android:inputType="textCapCharacters"
                         app:met_mask="#########-##" />
 
                 </LinearLayout>
@@ -195,7 +195,7 @@
                         style="@style/EditText_ch_num"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
                         android:hint="######-..."
-                        android:inputType="textCapWords"
+                        android:inputType="textCapCharacters"
                         app:met_mask="######-" />
 
                     <Button
