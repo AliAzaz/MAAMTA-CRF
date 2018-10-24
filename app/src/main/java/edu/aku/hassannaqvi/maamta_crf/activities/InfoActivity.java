@@ -256,6 +256,9 @@ public class InfoActivity extends AppCompatActivity {
         if (!validatorClass.EmptyTextBox(this, bi.mlw01, getString(R.string.mlw01), 10, 10)) {
             return false;
         }
+        if (!validatorClass.PatternTextBox(this, bi.mlw01, getString(R.string.mlw01), "[^0-9]{2,2}-[^0-9]{2,2}-[0-9]{4,4}", "XX-XX-XXXX")) {
+            return false;
+        }
         if (!validatorClass.EmptyTextBox(this, bi.mlw02, getString(R.string.mlw02))) {
             return false;
         }
@@ -263,10 +266,10 @@ public class InfoActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.mlw04, getString(R.string.mlw04))) {
+        if (!validatorClass.EmptyTextBox(this, bi.mlw04, getString(R.string.mlw04), 12, 12)) {
             return false;
         }
-        if (!validatorClass.PatternTextBox(this, bi.mlw04, getString(R.string.mlw04), "[^0-9]{4,4}[0-9]{5,5}-[^0-9]{1,1}[0-9]{1,2}", 0, 12, "XXXXXXXXX-XX")) {
+        if (!validatorClass.PatternTextBox(this, bi.mlw04, getString(R.string.mlw04), "[^0-9]{4,4}[0-9]{5,5}-[^0-9]{1,1}[0-9]{1,1}", "XXXXXXXXX-XX")) {
             return false;
         }
 
@@ -283,7 +286,7 @@ public class InfoActivity extends AppCompatActivity {
 
             if (bi.mlwScan.getText().toString().length() > 6) {
 
-                if (!validatorClass.PatternTextBox(this, bi.mlwScan, "Specimen ID", "[^0-9]{1,1}[0-9]{5,5}-", 0, 7, "XXXXX-XX+")) {
+                if (!validatorClass.PatternTextBox(this, bi.mlwScan, "Specimen ID", "[^0-9]{1,1}[0-9]{5,5}-", 0, 7, "XXXXX-...")) {
                     return false;
                 }
 

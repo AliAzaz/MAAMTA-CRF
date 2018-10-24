@@ -41,8 +41,7 @@
 
                     <com.santalu.widget.MaskEditText
                         android:id="@+id/mlw01"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
+                        style="@style/EditText_ch_num"
                         android:hint="##-##-####"
                         android:inputType="textCapWords"
                         android:maxLength="10"
@@ -117,11 +116,10 @@
 
                     <com.santalu.widget.MaskEditText
                         android:id="@+id/mlw04"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:hint="#########-###"
+                        style="@style/EditText_ch_num"
+                        android:hint="#########-##"
                         android:inputType="textCapWords"
-                        app:met_mask="#########-###" />
+                        app:met_mask="#########-##" />
 
                 </LinearLayout>
 
@@ -192,11 +190,13 @@
                         android:textColor="@android:color/white"
                         android:textSize="20sp" />
 
-                    <EditText
+                    <com.santalu.widget.MaskEditText
                         android:id="@+id/mlwScan"
                         style="@style/EditText_ch_num"
                         android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
-                        android:hint="SPECIMEN BARCODE" />
+                        android:hint="######-..."
+                        android:inputType="textCapWords"
+                        app:met_mask="######-" />
 
                     <Button
                         style="@style/buttonBG"
