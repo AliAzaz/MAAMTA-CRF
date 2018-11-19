@@ -9,6 +9,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.text.format.DateFormat;
 import android.util.Log;
 import android.view.View;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -25,6 +26,7 @@ import edu.aku.hassannaqvi.maamta_crf.contracts.FormsContract;
 import edu.aku.hassannaqvi.maamta_crf.core.AppMain;
 import edu.aku.hassannaqvi.maamta_crf.core.DatabaseHelper;
 import edu.aku.hassannaqvi.maamta_crf.databinding.ActivityInfoBinding;
+import edu.aku.hassannaqvi.maamta_crf.validation.ClearClass;
 import edu.aku.hassannaqvi.maamta_crf.validation.validatorClass;
 
 public class InfoActivity extends AppCompatActivity {
@@ -44,7 +46,19 @@ public class InfoActivity extends AppCompatActivity {
 
         InitializingItems();
         SetContent();
+        CallingListeners();
 
+    }
+
+    private void CallingListeners() {
+        bi.mlw05.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == bi.mlw05a.getId()) {
+                    ClearClass.ClearAllFields(bi.fldGrp01, true);
+                }
+            }
+        });
     }
 
     public void InitializingItems() {
@@ -86,7 +100,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void BtnEnd() {
-        if (ValidateForm()) {
+        if (ValidateForm(false)) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -139,7 +153,7 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void BtnContinue() {
-        if (ValidateForm()) {
+        if (ValidateForm(true)) {
             try {
                 SaveDraft();
             } catch (JSONException e) {
@@ -250,7 +264,7 @@ public class InfoActivity extends AppCompatActivity {
 
     }
 
-    public boolean ValidateForm() {
+    public boolean ValidateForm(boolean flag) {
 
         if (!validatorClass.EmptyTextBox(this, bi.mlw01, getString(R.string.mlw01), 10, 10)) {
             return false;
@@ -258,6 +272,10 @@ public class InfoActivity extends AppCompatActivity {
         if (!validatorClass.PatternTextBox(this, bi.mlw01, getString(R.string.mlw01), "[^0-9]{2,2}-[^0-9]{2,2}-[0-9]{4,4}", "Wrong format!!")) {
             return false;
         }
+
+        if (!flag)
+            return true;
+
         if (!validatorClass.EmptyTextBox(this, bi.mlw02, getString(R.string.mlw02))) {
             return false;
         }
@@ -276,12 +294,12 @@ public class InfoActivity extends AppCompatActivity {
             return false;
         }
 
-        if (!validatorClass.EmptyTextBox(this, bi.mlwScan, "Specimen ID")) {
-            Toast.makeText(this, "Please scan specimen ID!!", Toast.LENGTH_SHORT).show();
-            return false;
-        }
+        if (bi.mlw05a.isChecked()) {
+            if (!validatorClass.EmptyTextBox(this, bi.mlwScan, "Specimen ID")) {
+                Toast.makeText(this, "Please scan specimen ID!!", Toast.LENGTH_SHORT).show();
+                return false;
+            }
 
-        if (bi.mlwScan.isEnabled()) {
 
             if (bi.mlwScan.getText().toString().length() > 6) {
 
@@ -295,42 +313,42 @@ public class InfoActivity extends AppCompatActivity {
                 return false;
             }
 
-        }
 
-        if (!validatorClass.EmptyRadioButton(this, bi.mlw06, bi.mlw06a, getString(R.string.mlw06))) {
-            return false;
-        }
-        if (!validatorClass.EmptyRadioButton(this, bi.mlw07, bi.mlw07a, getString(R.string.mlw07))) {
-            return false;
-        }
-        if (!validatorClass.EmptyTextBox(this, bi.mlw08, getString(R.string.mlw08))) {
-            return false;
-        }
-        if (!validatorClass.EmptyTextBox(this, bi.mlw09a, getString(R.string.mlw09a))) {
-            return false;
-        }
-        if (!validatorClass.EmptyTextBox(this, bi.mlw09b, getString(R.string.mlw09b))) {
-            return false;
-        }
-
-        if (fTYPE.equals("crf3")) {
-            if (!validatorClass.EmptyTextBox(this, bi.mlw11a, getString(R.string.mlw11a))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.mlw06, bi.mlw06a, getString(R.string.mlw06))) {
                 return false;
             }
-            if (!validatorClass.EmptyTextBox(this, bi.mlw11b, getString(R.string.mlw11b))) {
+            if (!validatorClass.EmptyRadioButton(this, bi.mlw07, bi.mlw07a, getString(R.string.mlw07))) {
                 return false;
             }
-        }
-
-        if (!validatorClass.EmptyTextBox(this, bi.mlw10, getString(R.string.mlw10))) {
-            return false;
-        }
-
-        if (fTYPE.equals("crf3")) {
-            if (!validatorClass.EmptyRadioButton(this, bi.mlw12, bi.mlw12a, getString(R.string.mlw12))) {
+            if (!validatorClass.EmptyTextBox(this, bi.mlw08, getString(R.string.mlw08))) {
                 return false;
             }
-            return validatorClass.EmptyTextBox(this, bi.mlw13, getString(R.string.mlw13));
+            if (!validatorClass.EmptyTextBox(this, bi.mlw09a, getString(R.string.mlw09a))) {
+                return false;
+            }
+            if (!validatorClass.EmptyTextBox(this, bi.mlw09b, getString(R.string.mlw09b))) {
+                return false;
+            }
+
+            if (fTYPE.equals("crf3")) {
+                if (!validatorClass.EmptyTextBox(this, bi.mlw11a, getString(R.string.mlw11a))) {
+                    return false;
+                }
+                if (!validatorClass.EmptyTextBox(this, bi.mlw11b, getString(R.string.mlw11b))) {
+                    return false;
+                }
+            }
+
+            if (!validatorClass.EmptyTextBox(this, bi.mlw10, getString(R.string.mlw10))) {
+                return false;
+            }
+
+            if (fTYPE.equals("crf3")) {
+                if (!validatorClass.EmptyRadioButton(this, bi.mlw12, bi.mlw12a, getString(R.string.mlw12))) {
+                    return false;
+                }
+                return validatorClass.EmptyTextBox(this, bi.mlw13, getString(R.string.mlw13));
+            }
         }
 
         return true;

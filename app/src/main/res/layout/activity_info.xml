@@ -175,265 +175,12 @@
 
             </android.support.v7.widget.CardView>
 
-            <!--Barcode START-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="SPECIMEN ID"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <com.santalu.widget.MaskEditText
-                        android:id="@+id/mlwScan"
-                        style="@style/EditText_ch_num"
-                        android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
-                        android:hint="######-..."
-                        android:inputType="textCapCharacters"
-                        app:met_mask="######-" />
-
-                    <Button
-                        style="@style/buttonBG"
-                        android:onClick="@{() -> callback.BtnScanSpec()}"
-                        android:text="Scan Barcode"
-                        android:textColor="@color/white" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-            <!--Barcode END-->
-
-            <!--mlw06-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/mlw06"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <RadioGroup
-                        android:id="@+id/mlw06"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/mlw06a"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mlw06a" />
-
-                        <RadioButton
-                            android:id="@+id/mlw06b"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mlw06b" />
-
-                        <RadioButton
-                            android:id="@+id/mlw06c"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mlw06c" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--mlw07-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/mlw07"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <RadioGroup
-                        android:id="@+id/mlw07"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
-
-                        <RadioButton
-                            android:id="@+id/mlw07a"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mlw07a" />
-
-                        <RadioButton
-                            android:id="@+id/mlw07b"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:text="@string/mlw07b" />
-
-                    </RadioGroup>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--mlw08-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/mlw08"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/mlw08"
-                        style="@style/EditText_number"
-                        android:hint="@string/mlw08"
-                        android:maxLength="1" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--mlw09-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/mlw09"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <LinearLayout
-                        style="@style/linerlayout_view"
-                        android:orientation="horizontal">
-
-                        <io.blackbox_vision.datetimepickeredittext.view.TimePickerEditText
-                            android:id="@+id/mlw09b"
-                            style="@style/EditText_number_b_box"
-                            android:layout_width="0dp"
-                            android:layout_marginRight="10dp"
-                            android:layout_weight="40"
-                            android:focusable="false"
-                            android:hint="@string/mlw09b"
-                            android:textColor="@android:color/black"
-                            app:is24HourView="true"
-                            app:timeFormat="HH:mm" />
-
-                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                            android:id="@+id/mlw09a"
-                            style="@style/EditText_number_b_box"
-                            android:layout_width="0dp"
-                            android:layout_weight="40"
-                            android:focusable="false"
-                            android:hint="@string/mlw09a"
-                            android:textColor="@android:color/black"
-                            app:dateFormat="dd-MM-yyyy" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--mlw11-->
-            <android.support.v7.widget.CardView
-                android:id="@+id/mlwCrf3A"
-                style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/mlw11"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <LinearLayout
-                        style="@style/linerlayout_view"
-                        android:orientation="horizontal">
-
-                        <EditText
-                            android:id="@+id/mlw11a"
-                            style="@style/EditText_number_de"
-                            android:hint="@string/mlw11a"
-                            android:maxLength="1" />
-
-                        <EditText
-                            android:id="@+id/mlw11b"
-                            style="@style/EditText_number_de"
-                            android:hint="@string/mlw11b"
-                            android:maxLength="1" />
-
-                    </LinearLayout>
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
-            <!--mlw10-->
-            <android.support.v7.widget.CardView style="@style/cardView">
-
-                <LinearLayout style="@style/linerlayout_view">
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:background="@color/colorPrimary"
-                        android:text="@string/mlw10"
-                        android:textAppearance="?android:attr/textAppearanceLarge"
-                        android:textColor="@android:color/white"
-                        android:textSize="20sp" />
-
-                    <EditText
-                        android:id="@+id/mlw10"
-                        style="@style/EditText_number"
-                        android:hint="@string/mlw10"
-                        android:maxLength="4" />
-
-                </LinearLayout>
-
-            </android.support.v7.widget.CardView>
-
             <LinearLayout
-                android:id="@+id/mlwCrf3B"
-                style="@style/linerlayout_view">
+                android:id="@+id/fldGrp01"
+                style="@style/linerlayout_view"
+                android:visibility="@{mlw05a.checked ? View.VISIBLE : View.GONE}">
 
-                <!--mlw12-->
+                <!--Barcode START-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
                     <LinearLayout style="@style/linerlayout_view">
@@ -443,28 +190,68 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:background="@color/colorPrimary"
-                            android:text="@string/mlw12"
+                            android:text="SPECIMEN ID"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp" />
+
+                        <com.santalu.widget.MaskEditText
+                            android:id="@+id/mlwScan"
+                            style="@style/EditText_ch_num"
+                            android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789-"
+                            android:hint="######-..."
+                            android:inputType="textCapCharacters"
+                            app:met_mask="######-###" />
+
+                        <Button
+                            style="@style/buttonBG"
+                            android:onClick="@{() -> callback.BtnScanSpec()}"
+                            android:text="Scan Barcode"
+                            android:textColor="@color/white" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+                <!--Barcode END-->
+
+                <!--mlw06-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linerlayout_view">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/mlw06"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white"
                             android:textSize="20sp" />
 
                         <RadioGroup
-                            android:id="@+id/mlw12"
+                            android:id="@+id/mlw06"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical">
 
                             <RadioButton
-                                android:id="@+id/mlw12a"
+                                android:id="@+id/mlw06a"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/yes" />
+                                android:text="@string/mlw06a" />
 
                             <RadioButton
-                                android:id="@+id/mlw12b"
+                                android:id="@+id/mlw06b"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:text="@string/no" />
+                                android:text="@string/mlw06b" />
+
+                            <RadioButton
+                                android:id="@+id/mlw06c"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mlw06c" />
 
                         </RadioGroup>
 
@@ -472,7 +259,7 @@
 
                 </android.support.v7.widget.CardView>
 
-                <!--mlw13-->
+                <!--mlw07-->
                 <android.support.v7.widget.CardView style="@style/cardView">
 
                     <LinearLayout style="@style/linerlayout_view">
@@ -482,22 +269,242 @@
                             android:layout_height="wrap_content"
                             android:layout_gravity="center_horizontal"
                             android:background="@color/colorPrimary"
-                            android:text="@string/mlw13"
+                            android:text="@string/mlw07"
                             android:textAppearance="?android:attr/textAppearanceLarge"
                             android:textColor="@android:color/white"
                             android:textSize="20sp" />
 
-                        <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
-                            android:id="@+id/mlw13"
-                            style="@style/EditText_number_b_box"
-                            android:focusable="false"
-                            android:hint="@string/mlw13"
-                            android:textColor="@android:color/black"
-                            app:dateFormat="dd-MM-yyyy" />
+                        <RadioGroup
+                            android:id="@+id/mlw07"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical">
+
+                            <RadioButton
+                                android:id="@+id/mlw07a"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mlw07a" />
+
+                            <RadioButton
+                                android:id="@+id/mlw07b"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="@string/mlw07b" />
+
+                        </RadioGroup>
 
                     </LinearLayout>
 
                 </android.support.v7.widget.CardView>
+
+                <!--mlw08-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linerlayout_view">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/mlw08"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/mlw08"
+                            style="@style/EditText_number"
+                            android:hint="@string/mlw08"
+                            android:maxLength="1" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--mlw09-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linerlayout_view">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/mlw09"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            style="@style/linerlayout_view"
+                            android:orientation="horizontal">
+
+                            <io.blackbox_vision.datetimepickeredittext.view.TimePickerEditText
+                                android:id="@+id/mlw09b"
+                                style="@style/EditText_number_b_box"
+                                android:layout_width="0dp"
+                                android:layout_marginRight="10dp"
+                                android:layout_weight="40"
+                                android:focusable="false"
+                                android:hint="@string/mlw09b"
+                                android:textColor="@android:color/black"
+                                app:is24HourView="true"
+                                app:timeFormat="HH:mm" />
+
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                android:id="@+id/mlw09a"
+                                style="@style/EditText_number_b_box"
+                                android:layout_width="0dp"
+                                android:layout_weight="40"
+                                android:focusable="false"
+                                android:hint="@string/mlw09a"
+                                android:textColor="@android:color/black"
+                                app:dateFormat="dd-MM-yyyy" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--mlw11-->
+                <android.support.v7.widget.CardView
+                    android:id="@+id/mlwCrf3A"
+                    style="@style/cardView">
+
+                    <LinearLayout style="@style/linerlayout_view">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/mlw11"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp" />
+
+                        <LinearLayout
+                            style="@style/linerlayout_view"
+                            android:orientation="horizontal">
+
+                            <EditText
+                                android:id="@+id/mlw11a"
+                                style="@style/EditText_number_de"
+                                android:hint="@string/mlw11a"
+                                android:maxLength="1" />
+
+                            <EditText
+                                android:id="@+id/mlw11b"
+                                style="@style/EditText_number_de"
+                                android:hint="@string/mlw11b"
+                                android:maxLength="1" />
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <!--mlw10-->
+                <android.support.v7.widget.CardView style="@style/cardView">
+
+                    <LinearLayout style="@style/linerlayout_view">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:background="@color/colorPrimary"
+                            android:text="@string/mlw10"
+                            android:textAppearance="?android:attr/textAppearanceLarge"
+                            android:textColor="@android:color/white"
+                            android:textSize="20sp" />
+
+                        <EditText
+                            android:id="@+id/mlw10"
+                            style="@style/EditText_number"
+                            android:hint="@string/mlw10"
+                            android:maxLength="4" />
+
+                    </LinearLayout>
+
+                </android.support.v7.widget.CardView>
+
+                <LinearLayout
+                    android:id="@+id/mlwCrf3B"
+                    style="@style/linerlayout_view">
+
+                    <!--mlw12-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linerlayout_view">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/mlw12"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp" />
+
+                            <RadioGroup
+                                android:id="@+id/mlw12"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical">
+
+                                <RadioButton
+                                    android:id="@+id/mlw12a"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/yes" />
+
+                                <RadioButton
+                                    android:id="@+id/mlw12b"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/no" />
+
+                            </RadioGroup>
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                    <!--mlw13-->
+                    <android.support.v7.widget.CardView style="@style/cardView">
+
+                        <LinearLayout style="@style/linerlayout_view">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:background="@color/colorPrimary"
+                                android:text="@string/mlw13"
+                                android:textAppearance="?android:attr/textAppearanceLarge"
+                                android:textColor="@android:color/white"
+                                android:textSize="20sp" />
+
+                            <io.blackbox_vision.datetimepickeredittext.view.DatePickerInputEditText
+                                android:id="@+id/mlw13"
+                                style="@style/EditText_number_b_box"
+                                android:focusable="false"
+                                android:hint="@string/mlw13"
+                                android:textColor="@android:color/black"
+                                app:dateFormat="dd-MM-yyyy" />
+
+                        </LinearLayout>
+
+                    </android.support.v7.widget.CardView>
+
+                </LinearLayout>
 
             </LinearLayout>
 

@@ -270,25 +270,20 @@ public class MainActivity extends Activity {
         NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
         Log.e(TAG, "syncServer: 2");
         if (networkInfo != null && networkInfo.isConnected()) {
-            /*Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncForms(this).execute();*/
-            //new SyncForms5(this).execute();
 
-            /*Toast.makeText(getApplicationContext(), "Syncing Participants", Toast.LENGTH_SHORT).show();
-            new SyncParticipants(this).execute();
-*/
-            /*Toast.makeText(getApplicationContext(), "Syncing Eligibles", Toast.LENGTH_SHORT).show();
-            new SyncEligibles(this).execute();*/
+            for (byte i = 1; i <= 6; i++) {
 
-            Toast.makeText(getApplicationContext(), "Syncing Forms", Toast.LENGTH_SHORT).show();
-            new SyncAllData(
-                    this,
-                    "Forms",
-                    "updateSyncedForms",
-                    FormsContract.class,
-                    AppMain._HOST_URL + FormsContract.FormsTable._URL,
-                    db.getUnsyncedForms()
-            ).execute();
+                Toast.makeText(getApplicationContext(), "Syncing Forms CRF-" + i, Toast.LENGTH_SHORT).show();
+                new SyncAllData(
+                        this,
+                        "Forms CRF-" + i,
+                        "updateSyncedForms",
+                        FormsContract.class,
+                        AppMain._HOST_URL + FormsContract.FormsTable._URL,
+                        db.getUnsyncedForms("crf" + i)
+                ).execute();
+
+            }
 
             SharedPreferences syncPref = getSharedPreferences("SyncInfo", Context.MODE_PRIVATE);
             SharedPreferences.Editor editor = syncPref.edit();
