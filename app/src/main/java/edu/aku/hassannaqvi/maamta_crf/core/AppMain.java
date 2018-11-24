@@ -38,9 +38,9 @@ import edu.aku.hassannaqvi.maamta_crf.other.TypefaceUtil;
 
 public class AppMain extends Application {
 
-    public static final String _IP = "f49461"; // Test PHP server
-    //    public static final String _IP = "10.1.79.42"; // Matiyari server
     public static final Integer _PORT = 8080; // Port - with colon (:)
+    public static final String _IP = "43.245.131.159:" + _PORT + "/"; // Test PHP server
+    public static final String _TEST_IP = "10.1.42.30" + "/"; // Linux server
 
     public static final String _PROJECT_FOLDER_MAMTA = "maamta-crf/api/";
     public static final String _PROJECT_FOLDER_4 = "mapps/form4/api/";
@@ -49,7 +49,7 @@ public class AppMain extends Application {
     public static final String _PROJECT_FOLDER_16 = "mapps/form16/api/";
     public static final String _PROJECT_FOLDER_15_16 = "mapps/form15_16/api/";
 
-    public static final String _HOST_URL = "http://" + _IP + ":" + _PORT + "/" + _PROJECT_FOLDER_MAMTA;
+    public static final String _HOST_URL = "http://" + _TEST_IP + _PROJECT_FOLDER_MAMTA;
 
     public static final String _HOST_URL_3 =
             "http://" + _IP

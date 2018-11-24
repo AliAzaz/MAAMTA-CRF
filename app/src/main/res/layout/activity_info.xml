@@ -389,19 +389,19 @@
 
                         <LinearLayout
                             style="@style/linerlayout_view"
-                            android:orientation="horizontal">
+                            android:orientation="vertical">
 
                             <EditText
                                 android:id="@+id/mlw11a"
                                 style="@style/EditText_number_de"
                                 android:hint="@string/mlw11a"
-                                android:maxLength="1" />
+                                android:maxLength="2" />
 
                             <EditText
                                 android:id="@+id/mlw11b"
                                 style="@style/EditText_number_de"
                                 android:hint="@string/mlw11b"
-                                android:maxLength="1" />
+                                android:maxLength="2" />
 
                         </LinearLayout>
 
@@ -478,7 +478,9 @@
                     </android.support.v7.widget.CardView>
 
                     <!--mlw13-->
-                    <android.support.v7.widget.CardView style="@style/cardView">
+                    <android.support.v7.widget.CardView
+                        style="@style/cardView"
+                        android:visibility="@{mlw12a.checked ? View.VISIBLE : View.GONE}">
 
                         <LinearLayout style="@style/linerlayout_view">
 
@@ -497,6 +499,7 @@
                                 style="@style/EditText_number_b_box"
                                 android:focusable="false"
                                 android:hint="@string/mlw13"
+                                android:text='@{mlw12a.checked ? mlw13.getText.toString : ""}'
                                 android:textColor="@android:color/black"
                                 app:dateFormat="dd-MM-yyyy" />
 
