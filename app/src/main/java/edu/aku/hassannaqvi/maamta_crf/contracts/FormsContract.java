@@ -12,8 +12,8 @@ import org.json.JSONObject;
 
 public class FormsContract {
 
-    private String projectName = "WFP-PW Study";
-    private String surveyType = "Monthly follow-up form for PLW - Pishin study";
+    private String projectName = "MAAMTA-CRF";
+    private String surveyType = "MAAMTA-CRF study";
     private Long _ID;
     private String UID = "";
     private String formDate = ""; // Date

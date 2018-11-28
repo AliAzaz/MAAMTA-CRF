@@ -20,7 +20,7 @@
     <!-- String related to section headings -->
     <string name="crf1"> LW blood specimen for Ferritin, Transferrin, 1-α Acid Glycoprotein and C-Reactive protein </string>
     <string name="crf2"> Infant blood specimen for Ferritin, Transferrin, 1-α Acid Glycoprotein and C-Reactive protein </string>
-    <string name="crf3"> Stool Sample for 16s RNA Microbiome, MPO and DNA Tac Assay </string>
+    <string name="crf3"> Infant Stool Sample for 16s RNA Microbiome, MPO and DNA Tac Assay </string>
     <string name="crf4"> LW  Breastmilk collection </string>
     <string name="crf5"> PW blood specimen for Ferritin, Vitamin D </string>
     <string name="crf6"> PW Cord blood specimen  </string>
