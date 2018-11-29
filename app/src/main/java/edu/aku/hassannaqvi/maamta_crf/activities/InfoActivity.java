@@ -160,7 +160,8 @@ public class InfoActivity extends AppCompatActivity {
             if (UpdateDB()) {
 
                 finish();
-                startActivity(new Intent(this, MainActivity.class));
+                startActivity(new Intent(this, EndingActivity.class)
+                        .putExtra("complete", true));
 
             } else {
                 Toast.makeText(this, "Failed to Update Database!", Toast.LENGTH_SHORT).show();
@@ -210,6 +211,7 @@ public class InfoActivity extends AppCompatActivity {
         sInfo.put(fTYPE + "a02", bi.mlw02.getText().toString());
         sInfo.put(fTYPE + "a03", bi.mlw03.getText().toString());
         sInfo.put(fTYPE + "a04", bi.mlw04.getText().toString());
+        sInfo.put(fTYPE + "a14", bi.mlw14.getText().toString());
         sInfo.put(fTYPE + "a05", bi.mlw05a.isChecked() ? "1" : bi.mlw05b.isChecked() ? "2"
                 : bi.mlw05c.isChecked() ? "3" : bi.mlw05d.isChecked() ? "4" : "0");
         sInfo.put(fTYPE + "a06", bi.mlw06a.isChecked() ? "1" : bi.mlw06b.isChecked() ? "2"
@@ -283,6 +285,10 @@ public class InfoActivity extends AppCompatActivity {
             return false;
         }
         if (!validatorClass.PatternTextBox(this, bi.mlw04, getString(R.string.mlw04), "[^0-9]{4,4}[0-9]{5,5}-[^0-9]{1,1}[0-9]{1,1}", "Wrong format!!")) {
+            return false;
+        }
+
+        if (!validatorClass.EmptyTextBox(this, bi.mlw14, getString(R.string.mlw14))) {
             return false;
         }
 

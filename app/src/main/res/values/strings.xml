@@ -38,7 +38,7 @@
     <string name="female"> عورت </string>
     <string name="year"> سال </string>
     <string name="month"> مہینہ </string>
-    <string name="day"> دن </string>
+    <string name="day"> Days </string>
     <string name="weeks"> ہفتہ </string>
     <string name="hours"> کلاک </string>
     <string name="times"> تعداد </string>
@@ -47,7 +47,6 @@
     <string name="reason">وجہ</string>
     <string name="pw_name">حاملہ خاتون کا نام </string>
     <string name="pw_detail"> حاملہ خاتون کی تفصیل </string>
-
 
     <!-- Strings related to Sections Below -->
     <string name="istatus">Outcome of MAMTA - CRF</string>
@@ -81,5 +80,6 @@
     <string name="mlw11b"> Weight of stool container After </string>
     <string name="mlw12"> Infant Stool Microbiome Sample vials collected </string>
     <string name="mlw13"> Time Infant Stool Microbiome Sample vials placed in LN2 tank </string>
+    <string name="mlw14"> Current Age of Child </string>
 
 </resources>
