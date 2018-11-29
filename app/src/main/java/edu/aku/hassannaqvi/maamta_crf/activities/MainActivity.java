@@ -237,8 +237,6 @@ public class MainActivity extends Activity {
                 return "crf4";
             case 5:
                 return "crf5";
-            case 6:
-                return "crf6";
         }
         return "";
     }
@@ -271,7 +269,7 @@ public class MainActivity extends Activity {
         Log.e(TAG, "syncServer: 2");
         if (networkInfo != null && networkInfo.isConnected()) {
 
-            for (byte i = 1; i <= 6; i++) {
+            for (byte i = 1; i <= 5; i++) {
 
                 Toast.makeText(getApplicationContext(), "Syncing Forms CRF-" + i, Toast.LENGTH_SHORT).show();
                 new SyncAllData(

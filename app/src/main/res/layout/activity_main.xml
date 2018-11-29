@@ -128,14 +128,6 @@
                 android:onClick="@{(v) -> callback.openCRF(5)}"
                 android:text="CRF-5" />
 
-            <Button
-                android:id="@+id/openCRF6"
-                style="@style/buttonBG"
-                android:layout_marginTop="16dp"
-                android:layout_marginBottom="8dp"
-                android:onClick="@{(v) -> callback.openCRF(6)}"
-                android:text="CRF-6" />
-
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"

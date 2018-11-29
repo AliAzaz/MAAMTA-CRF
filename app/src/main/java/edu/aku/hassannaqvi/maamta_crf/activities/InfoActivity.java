@@ -77,8 +77,8 @@ public class InfoActivity extends AppCompatActivity {
     }
 
     public void SetContent() {
-        bi.mlwCrf3A.setVisibility(fTYPE.equals("crf3") ? View.VISIBLE : View.GONE);
-        bi.mlwCrf3B.setVisibility(fTYPE.equals("crf3") ? View.VISIBLE : View.GONE);
+        bi.mlwCrf3A.setVisibility(fTYPE.equals("crf3") || fTYPE.equals("crf5") ? View.VISIBLE : View.GONE);
+        bi.mlwCrf3B.setVisibility(fTYPE.equals("crf3") || fTYPE.equals("crf5") ? View.VISIBLE : View.GONE);
     }
 
     private String LabelsAssign(String fTYPE) {
@@ -93,8 +93,6 @@ public class InfoActivity extends AppCompatActivity {
                 return getString(R.string.crf4);
             case "crf5":
                 return getString(R.string.crf5);
-            case "crf6":
-                return getString(R.string.crf6);
         }
         return "";
     }
@@ -223,7 +221,7 @@ public class InfoActivity extends AppCompatActivity {
 
         sInfo.put(fTYPE + "a10", bi.mlw10.getText().toString());
 
-        if (fTYPE.equals("crf3")) {
+        if (fTYPE.equals("crf3") || fTYPE.equals("crf5")) {
             sInfo.put(fTYPE + "a11a", bi.mlw11a.getText().toString());
             sInfo.put(fTYPE + "a11b", bi.mlw11b.getText().toString());
             sInfo.put(fTYPE + "a12", bi.mlw12a.isChecked() ? "1" : bi.mlw12b.isChecked() ? "2" : "0");
@@ -298,7 +296,6 @@ public class InfoActivity extends AppCompatActivity {
                 return false;
             }
 
-
             if (bi.mlwScan.getText().toString().length() > 6) {
 
                 if (!validatorClass.PatternTextBox(this, bi.mlwScan, "Specimen ID", "[^0-9]{1,1}[0-9]{5,5}-", 0, 7, "Wrong format!!")) {
@@ -328,7 +325,7 @@ public class InfoActivity extends AppCompatActivity {
                 return false;
             }
 
-            if (fTYPE.equals("crf3")) {
+            if (fTYPE.equals("crf3") || fTYPE.equals("crf5")) {
                 if (!validatorClass.EmptyTextBox(this, bi.mlw11a, getString(R.string.mlw11a))) {
                     return false;
                 }
@@ -341,7 +338,7 @@ public class InfoActivity extends AppCompatActivity {
                 return false;
             }
 
-            if (fTYPE.equals("crf3")) {
+            if (fTYPE.equals("crf3") || fTYPE.equals("crf5")) {
                 if (!validatorClass.EmptyRadioButton(this, bi.mlw12, bi.mlw12a, getString(R.string.mlw12))) {
                     return false;
                 }

@@ -22,9 +22,7 @@
     <string name="crf2"> Infant blood specimen for Ferritin, Transferrin, 1-α Acid Glycoprotein and C-Reactive protein </string>
     <string name="crf3"> Infant Stool Sample for 16s RNA Microbiome, MPO and DNA Tac Assay </string>
     <string name="crf4"> LW  Breastmilk collection </string>
-    <string name="crf5"> PW blood specimen for Ferritin, Vitamin D </string>
-    <string name="crf6"> PW Cord blood specimen  </string>
-
+    <string name="crf5"> Lactating woman’s Stool Sample for 16s RNA Microbiome, MPO and DNA Tac Assay </string>
 
     <!-- Strings that are fixed for all apps -->
     <string name="title_activity_splashscreen">SplashscreenActivity</string>
@@ -71,8 +69,8 @@
     <string name="mlw06b"> ARM B (Maamta only) </string>
     <string name="mlw06c"> ARMC (Maamta + Azithromycin) </string>
     <string name="mlw07"> Time Point </string>
-    <string name="mlw07a"> At 28 days of age of baby </string>
-    <string name="mlw07b"> At 4 months of age of the baby   </string>
+    <string name="mlw07a"> At 40 days of age of baby </string>
+    <string name="mlw07b"> At 56 days of age of the baby </string>
     <string name="mlw08"> Number of collection attempts </string>
     <string name="mlw09"> Collection </string>
     <string name="mlw09a"> Collection Date (DD/MM/YYYY) </string>
@@ -83,6 +81,5 @@
     <string name="mlw11b"> Weight of stool container After </string>
     <string name="mlw12"> Infant Stool Microbiome Sample vials collected </string>
     <string name="mlw13"> Time Infant Stool Microbiome Sample vials placed in LN2 tank </string>
-
 
 </resources>
