@@ -470,6 +470,7 @@ public class FormsContract {
 
         public static final String TABLE_NAME = "forms";
         public static final String _URL = "forms.php";
+        public static final String _URL_HEADER = "?tab=crf";
         public static final String COLUMN_NAME_NULLABLE = "NULLHACK";
         public static final String COLUMN_PROJECTNAME = "projectname";
         public static final String COLUMN_SURVEYTYPE = "surveytype";

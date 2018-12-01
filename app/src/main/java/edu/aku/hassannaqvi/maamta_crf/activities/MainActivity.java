@@ -277,7 +277,7 @@ public class MainActivity extends Activity {
                         "Forms CRF-" + i,
                         "updateSyncedForms",
                         FormsContract.class,
-                        AppMain._HOST_URL + FormsContract.FormsTable._URL + "?tab=crf" + i,
+                        AppMain._HOST_URL + FormsContract.FormsTable._URL + FormsContract.FormsTable._URL_HEADER + i,
                         db.getUnsyncedForms("crf" + i)
                 ).execute();
 

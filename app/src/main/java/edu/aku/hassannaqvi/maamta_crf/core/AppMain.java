@@ -49,7 +49,7 @@ public class AppMain extends Application {
     public static final String _PROJECT_FOLDER_16 = "mapps/form16/api/";
     public static final String _PROJECT_FOLDER_15_16 = "mapps/form15_16/api/";
 
-    public static final String _HOST_URL = "http://" + _IP + _PROJECT_FOLDER_MAMTA;
+    public static final String _HOST_URL = "http://" + _TEST_IP + _PROJECT_FOLDER_MAMTA;
 
     public static final String _HOST_URL_3 =
             "http://" + _IP
